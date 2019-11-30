@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Archi_TP3.Models
 {
-    public class Class1
+    public class User
     {
     }
 }

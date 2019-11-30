@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Archi_TP3.Models
 {
-    public class Class2
+    public class Patient
     {
     }
 }

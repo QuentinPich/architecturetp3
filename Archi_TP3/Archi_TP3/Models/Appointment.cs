@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Archi_TP3.Models
 {
-    public class Class5
+    public class Appointment
     {
     }
 }
