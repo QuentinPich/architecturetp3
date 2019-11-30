@@ -5,7 +5,8 @@ using System.Web;
 
 namespace Archi_TP3.Models
 {
-    public class Class3
+    //SALUT C'EST COOL
+    public class Employee
     {
     }
 }
