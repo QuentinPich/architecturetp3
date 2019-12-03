@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Archi_TP3"
+    "\\Archi_TP3",
+    "\\Archi_TP3\\Archi_TP3",
+    "\\Archi_TP3\\Archi_TP3\\Models",
+    "\\Archi_TP3\\Archi_TP3\\Views",
+    "\\Archi_TP3\\Archi_TP3\\Views\\Home",
+    "\\Archi_TP3\\Archi_TP3\\Views\\Shared"
   ],
   "PreviewInSolutionExplorer": false
 }
