@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Archi_TP3.Models
 {
     public class Patient
     {
 
-        public int IdPatient { get; set; }
+        public int PatientID { get; set; }
 
         public string LastNamePatient { get; set; }
 
