@@ -12,10 +12,17 @@ namespace Archi_TP3.Models
 
             using (var ctx = new Context())
             {
-
+                Console.Write("test");
                 var user = new User() { login="azerty", password="azerty" };
                 ctx.Users.Add(user);
                 ctx.SaveChanges();
+
+                var query = from u in ctx.Users select u;
+                Console.WriteLine("All users in database:");
+                foreach (var item in query)
+                {
+                    Console.WriteLine(item.login);
+                }
             }
         }
     }
