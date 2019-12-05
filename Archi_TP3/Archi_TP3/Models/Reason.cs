@@ -10,13 +10,12 @@ namespace Archi_TP3.Models
     {
          public int ReasonID { get; set; }
 
-        [ForeignKey("Label")] public string Label { get; set; }
+        public string Label { get; set; }
 
         public string ReasonCost { get; set; }
 
         public int duration { get; set; }
 
-        public virtual DoctorType DoctorType { get; set; }
 
     }
 }

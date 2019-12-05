@@ -256,3 +256,5 @@ C:\Users\lenal\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_
 C:\Users\lenal\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.csproj.CopyComplete
 C:\Users\lenal\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.dll
 C:\Users\lenal\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.pdb
+C:\Users\lenal\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.Migration.Clinic.InitialCreate.resources
+C:\Users\lenal\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.csproj.GenerateResource.cache

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Archi_TP3.Models.Doctor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DoctorType.Label)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.LastNameEmployee)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoctorType.Label)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.LastNameEmployee)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DoctorID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DoctorID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DoctorID })
+        </td>
+    </tr>
+}
+
+</table>

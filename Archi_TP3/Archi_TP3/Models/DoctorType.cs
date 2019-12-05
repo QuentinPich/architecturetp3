@@ -13,6 +13,6 @@ namespace Archi_TP3.Models
 
         public string Label { get; set; }
 
-        public virtual Reason Reason  { get; set; }
+        public Reason Reason  { get; set; }
     }
 }

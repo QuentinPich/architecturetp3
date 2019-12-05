@@ -7,6 +7,5 @@ namespace Archi_TP3.Models
         public int RoomID { get; set; }
         public int EquipmentID { get; set; }
 
-        public Equipment Equipment { get; set; }
     }
 }

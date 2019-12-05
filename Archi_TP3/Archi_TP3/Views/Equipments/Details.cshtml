@@ -1,0 +1,42 @@
+﻿@model Archi_TP3.Models.Equipment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Equipment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.RoomID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.RoomID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipmentLabel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipmentLabel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipmentPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipmentPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EquipmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
