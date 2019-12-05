@@ -2,9 +2,9 @@
 
 namespace Archi_TP3.Models
 {
-    public class ClinicContext : DbContext
+    public class Context : DbContext
     {
-        public ClinicContext() : base("DentalClinicDB") { }
+        public Context() : base("DentalClinicDB") {}
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }

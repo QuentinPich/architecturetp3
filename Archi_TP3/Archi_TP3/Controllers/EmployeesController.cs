@@ -12,7 +12,7 @@ namespace Archi_TP3.Controllers
 {
     public class EmployeesController : Controller
     {
-        private ClinicContext db = new ClinicContext();
+        private Context db = new Context();
 
         // GET: Employees
         public ActionResult Index()
