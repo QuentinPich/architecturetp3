@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DentalClinicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="int" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="DoctorID" Type="int" Nullable="false" />
+          <Property Name="ReasonID" Type="int" Nullable="false" />
+          <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="AppointmentDate" Type="datetime" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="DoctorID" />
+          </Key>
+          <Property Name="DoctorID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="DoctorTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DoctorType">
+          <Key>
+            <PropertyRef Name="DoctorTypeID" />
+          </Key>
+          <Property Name="DoctorTypeID" Type="int" Nullable="false" />
+          <Property Name="ReasonID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="LastNameEmployee" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="FirstNameEmployee" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="EmailEmployee" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="AddressEmployee" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="TelephoneEmployee" Type="int" Nullable="false" />
+          <Property Name="BirthDateEmployee" Type="datetime" />
+          <Property Name="HiringDateEmployee" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="int" Nullable="false" />
+          <Property Name="EquipmentLabel" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="EquipmentPrice" Type="int" Nullable="false" />
+          <Property Name="RoomID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="LastNamePatient" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="FirstNamePatient" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="EmailPatient" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="AddressPatient" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="TelephonePatient" Type="int" Nullable="false" />
+          <Property Name="BirthDatePatient" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PatientRecord">
+          <Key>
+            <PropertyRef Name="PatientRecordID" />
+          </Key>
+          <Property Name="PatientRecordID" Type="int" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="PatientHistory" Type="char" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reason">
+          <Key>
+            <PropertyRef Name="ReasonID" />
+          </Key>
+          <Property Name="ReasonID" Type="int" Nullable="false" />
+          <Property Name="Label" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="PatientHistory" Type="char" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="EquipmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="login" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="password" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="rights" Type="char" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Appointme__Docto__412EB0B6">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="DoctorID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Patie__403A8C7D">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Reaso__4222D4EF">
+          <End Role="Reason" Type="Self.Reason" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reason">
+              <PropertyRef Name="ReasonID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="ReasonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__RoomI__4316F928">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__DoctorTy__44FF419A">
+          <End Role="DoctorType" Type="Self.DoctorType" Multiplicity="1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorType">
+              <PropertyRef Name="DoctorTypeID" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="DoctorTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Employee__440B1D61">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DoctorTyp__Reaso__45F365D3">
+          <End Role="Reason" Type="Self.Reason" Multiplicity="1" />
+          <End Role="DoctorType" Type="Self.DoctorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reason">
+              <PropertyRef Name="ReasonID" />
+            </Principal>
+            <Dependent Role="DoctorType">
+              <PropertyRef Name="ReasonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__UserID__46E78A0C">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__RoomI__47DBAE45">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PatientRe__Patie__48CFD27E">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="PatientRecord" Type="Self.PatientRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="PatientRecord">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Room__EquipmentI__49C3F6B7">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DentalClinicDBModelStoreContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorType" EntityType="Self.DoctorType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientRecord" EntityType="Self.PatientRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reason" EntityType="Self.Reason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Appointme__Docto__412EB0B6" Association="Self.FK__Appointme__Docto__412EB0B6">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Patie__403A8C7D" Association="Self.FK__Appointme__Patie__403A8C7D">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Reaso__4222D4EF" Association="Self.FK__Appointme__Reaso__4222D4EF">
+            <End Role="Reason" EntitySet="Reason" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__RoomI__4316F928" Association="Self.FK__Appointme__RoomI__4316F928">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__DoctorTy__44FF419A" Association="Self.FK__Doctor__DoctorTy__44FF419A">
+            <End Role="DoctorType" EntitySet="DoctorType" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Employee__440B1D61" Association="Self.FK__Doctor__Employee__440B1D61">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DoctorTyp__Reaso__45F365D3" Association="Self.FK__DoctorTyp__Reaso__45F365D3">
+            <End Role="Reason" EntitySet="Reason" />
+            <End Role="DoctorType" EntitySet="DoctorType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__UserID__46E78A0C" Association="Self.FK__Employee__UserID__46E78A0C">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__RoomI__47DBAE45" Association="Self.FK__Equipment__RoomI__47DBAE45">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PatientRe__Patie__48CFD27E" Association="Self.FK__PatientRe__Patie__48CFD27E">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="PatientRecord" EntitySet="PatientRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Room__EquipmentI__49C3F6B7" Association="Self.FK__Room__EquipmentI__49C3F6B7">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DentalClinicDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="Int32" Nullable="false" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="DoctorID" Type="Int32" Nullable="false" />
+          <Property Name="ReasonID" Type="Int32" Nullable="false" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <Property Name="AppointmentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Appointme__Docto__412EB0B6" FromRole="Appointment" ToRole="Doctor" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Patie__403A8C7D" FromRole="Appointment" ToRole="Patient" />
+          <NavigationProperty Name="Reason" Relationship="Self.FK__Appointme__Reaso__4222D4EF" FromRole="Appointment" ToRole="Reason" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Appointme__RoomI__4316F928" FromRole="Appointment" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="DoctorID" />
+          </Key>
+          <Property Name="DoctorID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="DoctorTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Docto__412EB0B6" FromRole="Doctor" ToRole="Appointment" />
+          <NavigationProperty Name="DoctorType" Relationship="Self.FK__Doctor__DoctorTy__44FF419A" FromRole="Doctor" ToRole="DoctorType" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Doctor__Employee__440B1D61" FromRole="Doctor" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="DoctorType">
+          <Key>
+            <PropertyRef Name="DoctorTypeID" />
+          </Key>
+          <Property Name="DoctorTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ReasonID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK__Doctor__DoctorTy__44FF419A" FromRole="DoctorType" ToRole="Doctor" />
+          <NavigationProperty Name="Reason" Relationship="Self.FK__DoctorTyp__Reaso__45F365D3" FromRole="DoctorType" ToRole="Reason" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="LastNameEmployee" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FirstNameEmployee" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EmailEmployee" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AddressEmployee" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TelephoneEmployee" Type="Int32" Nullable="false" />
+          <Property Name="BirthDateEmployee" Type="DateTime" Precision="3" />
+          <Property Name="HiringDateEmployee" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK__Doctor__Employee__440B1D61" FromRole="Employee" ToRole="Doctor" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Employee__UserID__46E78A0C" FromRole="Employee" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+          <Property Name="EquipmentLabel" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EquipmentPrice" Type="Int32" Nullable="false" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Equipment__RoomI__47DBAE45" FromRole="Equipment" ToRole="Room" />
+          <NavigationProperty Name="Rooms" Relationship="Self.FK__Room__EquipmentI__49C3F6B7" FromRole="Equipment" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="LastNamePatient" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FirstNamePatient" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EmailPatient" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AddressPatient" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TelephonePatient" Type="Int32" Nullable="false" />
+          <Property Name="BirthDatePatient" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Patie__403A8C7D" FromRole="Patient" ToRole="Appointment" />
+          <NavigationProperty Name="PatientRecords" Relationship="Self.FK__PatientRe__Patie__48CFD27E" FromRole="Patient" ToRole="PatientRecord" />
+        </EntityType>
+        <EntityType Name="PatientRecord">
+          <Key>
+            <PropertyRef Name="PatientRecordID" />
+          </Key>
+          <Property Name="PatientRecordID" Type="Int32" Nullable="false" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="PatientHistory" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__PatientRe__Patie__48CFD27E" FromRole="PatientRecord" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Reason">
+          <Key>
+            <PropertyRef Name="ReasonID" />
+          </Key>
+          <Property Name="ReasonID" Type="Int32" Nullable="false" />
+          <Property Name="Label" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PatientHistory" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Reaso__4222D4EF" FromRole="Reason" ToRole="Appointment" />
+          <NavigationProperty Name="DoctorTypes" Relationship="Self.FK__DoctorTyp__Reaso__45F365D3" FromRole="Reason" ToRole="DoctorType" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__RoomI__4316F928" FromRole="Room" ToRole="Appointment" />
+          <NavigationProperty Name="Equipments" Relationship="Self.FK__Equipment__RoomI__47DBAE45" FromRole="Room" ToRole="Equipment" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK__Room__EquipmentI__49C3F6B7" FromRole="Room" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="rights" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__UserID__46E78A0C" FromRole="User" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK__Appointme__Docto__412EB0B6">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="DoctorID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Patie__403A8C7D">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Reaso__4222D4EF">
+          <End Role="Reason" Type="Self.Reason" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reason">
+              <PropertyRef Name="ReasonID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="ReasonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__RoomI__4316F928">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__DoctorTy__44FF419A">
+          <End Role="DoctorType" Type="Self.DoctorType" Multiplicity="1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorType">
+              <PropertyRef Name="DoctorTypeID" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="DoctorTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Employee__440B1D61">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DoctorTyp__Reaso__45F365D3">
+          <End Role="Reason" Type="Self.Reason" Multiplicity="1" />
+          <End Role="DoctorType" Type="Self.DoctorType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reason">
+              <PropertyRef Name="ReasonID" />
+            </Principal>
+            <Dependent Role="DoctorType">
+              <PropertyRef Name="ReasonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__UserID__46E78A0C">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__RoomI__47DBAE45">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Room__EquipmentI__49C3F6B7">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PatientRe__Patie__48CFD27E">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="PatientRecord" Type="Self.PatientRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="PatientRecord">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DentalClinicDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="DoctorTypes" EntityType="Self.DoctorType" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Equipments" EntityType="Self.Equipment" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="PatientRecords" EntityType="Self.PatientRecord" />
+          <EntitySet Name="Reasons" EntityType="Self.Reason" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Appointme__Docto__412EB0B6" Association="Self.FK__Appointme__Docto__412EB0B6">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Patie__403A8C7D" Association="Self.FK__Appointme__Patie__403A8C7D">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Reaso__4222D4EF" Association="Self.FK__Appointme__Reaso__4222D4EF">
+            <End Role="Reason" EntitySet="Reasons" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__RoomI__4316F928" Association="Self.FK__Appointme__RoomI__4316F928">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__DoctorTy__44FF419A" Association="Self.FK__Doctor__DoctorTy__44FF419A">
+            <End Role="DoctorType" EntitySet="DoctorTypes" />
+            <End Role="Doctor" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Employee__440B1D61" Association="Self.FK__Doctor__Employee__440B1D61">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Doctor" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DoctorTyp__Reaso__45F365D3" Association="Self.FK__DoctorTyp__Reaso__45F365D3">
+            <End Role="Reason" EntitySet="Reasons" />
+            <End Role="DoctorType" EntitySet="DoctorTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__UserID__46E78A0C" Association="Self.FK__Employee__UserID__46E78A0C">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__RoomI__47DBAE45" Association="Self.FK__Equipment__RoomI__47DBAE45">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Equipment" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Room__EquipmentI__49C3F6B7" Association="Self.FK__Room__EquipmentI__49C3F6B7">
+            <End Role="Equipment" EntitySet="Equipments" />
+            <End Role="Room" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PatientRe__Patie__48CFD27E" Association="Self.FK__PatientRe__Patie__48CFD27E">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientRecord" EntitySet="PatientRecords" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DentalClinicDBModelStoreContainer" CdmEntityContainer="DentalClinicDBEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="DoctorTypeID" ColumnName="DoctorTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorTypes">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.DoctorType">
+              <MappingFragment StoreEntitySet="DoctorType">
+                <ScalarProperty Name="DoctorTypeID" ColumnName="DoctorTypeID" />
+                <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LastNameEmployee" ColumnName="LastNameEmployee" />
+                <ScalarProperty Name="FirstNameEmployee" ColumnName="FirstNameEmployee" />
+                <ScalarProperty Name="EmailEmployee" ColumnName="EmailEmployee" />
+                <ScalarProperty Name="AddressEmployee" ColumnName="AddressEmployee" />
+                <ScalarProperty Name="TelephoneEmployee" ColumnName="TelephoneEmployee" />
+                <ScalarProperty Name="BirthDateEmployee" ColumnName="BirthDateEmployee" />
+                <ScalarProperty Name="HiringDateEmployee" ColumnName="HiringDateEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipments">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="EquipmentLabel" ColumnName="EquipmentLabel" />
+                <ScalarProperty Name="EquipmentPrice" ColumnName="EquipmentPrice" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="LastNamePatient" ColumnName="LastNamePatient" />
+                <ScalarProperty Name="FirstNamePatient" ColumnName="FirstNamePatient" />
+                <ScalarProperty Name="EmailPatient" ColumnName="EmailPatient" />
+                <ScalarProperty Name="AddressPatient" ColumnName="AddressPatient" />
+                <ScalarProperty Name="TelephonePatient" ColumnName="TelephonePatient" />
+                <ScalarProperty Name="BirthDatePatient" ColumnName="BirthDatePatient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientRecords">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.PatientRecord">
+              <MappingFragment StoreEntitySet="PatientRecord">
+                <ScalarProperty Name="PatientRecordID" ColumnName="PatientRecordID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="PatientHistory" ColumnName="PatientHistory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reasons">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.Reason">
+              <MappingFragment StoreEntitySet="Reason">
+                <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="PatientHistory" ColumnName="PatientHistory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DentalClinicDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="rights" ColumnName="rights" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
