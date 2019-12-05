@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe13da6c339c453d96d35c582aa19aca" Name="Diagram1">
+        <EntityTypeShape EntityType="DentalClinicDBModel.Appointment" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Doctor" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.DoctorType" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Employee" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Equipment" Width="1.5" PointX="1.5" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Patient" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.PatientRecord" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Reason" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Room" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.User" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Appointme__Docto__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Appointme__Patie__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Appointme__Reaso__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Appointme__RoomI__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Doctor__DoctorTy__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Doctor__Employee__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__DoctorTyp__Reaso__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Employee__UserID__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Equipment__RoomI__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Room__EquipmentI__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__PatientRe__Patie__48CFD27E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
