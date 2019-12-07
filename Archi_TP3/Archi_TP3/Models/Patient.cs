@@ -11,7 +11,7 @@ namespace Archi_TP3.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Patient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,7 +28,7 @@ namespace Archi_TP3.Models
         public string AddressPatient { get; set; }
         public int TelephonePatient { get; set; }
         public Nullable<System.DateTime> BirthDatePatient { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
