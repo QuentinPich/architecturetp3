@@ -28,10 +28,11 @@
                     <li>@Html.ActionLink("Créer un compte", "Create", "Users")</li>
                 </ul>
                 <div class="navbar-right">
-                    <form class="form-inline my-2 my-lg-0" action="recherche">
-                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light " type="submit">Search</button>
-                    </form>
+                    @using (Html.BeginForm("Index", "Patients", FormMethod.Post, new { @class="form-inline my-2 my-lg-0" }))
+                    {
+                            @Html.TextBox("LastName", null, new { @class= "form-control mr-sm-2", @placeholder = "Rechercher un dossier" })
+                            <input class="btn btn-outline-light" type="submit" value="Rechercher" />
+                    }
                 </div>
             </div>
         </div>

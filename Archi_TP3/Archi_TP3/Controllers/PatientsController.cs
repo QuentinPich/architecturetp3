@@ -15,9 +15,32 @@ namespace Archi_TP3.Controllers
         private Context db = new Context();
 
         // GET: Patients
-        public ActionResult Index()
+        public ActionResult Index(String LastName, String FirstName, String Email, String Address, int Telephone = 0)
         {
-            return View(db.Patients.ToList());
+            var patient = from p in db.Patients
+                            select p;
+
+            if (!String.IsNullOrEmpty(LastName))
+            {
+                patient = patient.Where(s => s.LastNamePatient.Contains(LastName));
+            }
+            if (!string.IsNullOrEmpty(FirstName))
+            {
+                patient = patient.Where(t => t.FirstNamePatient.Contains(FirstName));
+            }
+            if (!string.IsNullOrEmpty(Email))
+            {
+                patient = patient.Where(u => u.EmailPatient.Contains(Email));
+            }
+            if (!string.IsNullOrEmpty(Address))
+            {
+                patient = patient.Where(v => v.AddressPatient.Contains(Address));
+            }
+            if (Telephone != 0)
+            {
+                patient = patient.Where(w => w.TelephonePatient == Telephone);
+            }
+            return View(patient.ToList());
         }
 
         // GET: Patients/Details/5

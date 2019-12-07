@@ -3,9 +3,12 @@
     "",
     "\\Archi_TP3",
     "\\Archi_TP3\\Archi_TP3",
-    "\\Archi_TP3\\Archi_TP3\\Controllers",
-    "\\Archi_TP3\\Archi_TP3\\Models"
+    "\\Archi_TP3\\Archi_TP3\\DAL",
+    "\\Archi_TP3\\Archi_TP3\\Models",
+    "\\Archi_TP3\\Archi_TP3\\Views",
+    "\\Archi_TP3\\Archi_TP3\\Views\\Home",
+    "\\Archi_TP3\\Archi_TP3\\Views\\Shared"
   ],
-  "SelectedNode": "\\Archi_TP3\\Archi_TP3.sln",
+  "SelectedNode": "\\Archi_TP3\\Archi_TP3\\Properties",
   "PreviewInSolutionExplorer": false
 }
