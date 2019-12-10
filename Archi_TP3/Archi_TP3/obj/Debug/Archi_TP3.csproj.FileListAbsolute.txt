@@ -166,7 +166,6 @@ C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\bin\fr\System.Web
 C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\bin\fr\System.Web.WebPages.resources.dll
 C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\bin\fr\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\bin\fr\System.Web.WebPages.Razor.resources.dll
-C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.csprojAssemblyReference.cache
 C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.csproj.CopyComplete
 C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.dll
 C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.pdb
@@ -276,3 +275,8 @@ C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\bin\Microsoft.Owi
 C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\bin\Microsoft.Owin.Security.xml
 C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.csprojAssemblyReference.cache
+C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.Migration.Clinic.UpdateCreate.resources
+C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.Migration.Clinic.UpdateCreate1.resources
+C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.Migration.Clinic.UpdateRoom.resources
+C:\Users\Etli\Source\Repos\architecturetp3\Archi_TP3\Archi_TP3\obj\Debug\Archi_TP3.Migration.Clinic.UpdateRights.resources

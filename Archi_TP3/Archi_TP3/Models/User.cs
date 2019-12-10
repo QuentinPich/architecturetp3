@@ -10,6 +10,7 @@
 namespace Archi_TP3.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class User
@@ -23,7 +24,7 @@ namespace Archi_TP3.Models
         public int UserID { get; set; }
         public string login { get; set; }
         [DataType(DataType.Password)] public string password { get; set; }
-        public string rights { get; set; }
+        [DefaultValue(0)] public int? rights { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }

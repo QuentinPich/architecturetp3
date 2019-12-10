@@ -39,7 +39,7 @@ namespace Archi_TP3.Tests.Controllers
         }
 
         [TestMethod]
-        [DataRow(0)]
+        [DataRow(2)]
         public void Edit(int? id)
         {
             // Arrange
@@ -53,7 +53,7 @@ namespace Archi_TP3.Tests.Controllers
         }
 
         [TestMethod]
-        [DataRow(0)]
+        [DataRow(2)]
         public void Delete(int? id)
         {
             // Arrange

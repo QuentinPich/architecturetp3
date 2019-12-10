@@ -1,5 +1,5 @@
 Enable-Migrations -ContextTypeName ClinicContext -MigrationsDirectory Migration\Clinic
 
-add-migration -ConfigurationTypeName Archi_TP3.Migration.Clinic.Configuration "InitialCreate"
+add-migration -ConfigurationTypeName Archi_TP3.Migration.Clinic.Configuration "UpdateRights"
 
 update-database -ConfigurationTypeName Archi_TP3.Migration.Clinic.Configuration

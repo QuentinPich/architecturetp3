@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using Archi_TP3.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Archi_TP3;
-using Archi_TP3.Controllers;
+using System;
+using System.Web.Mvc;
 
 namespace Archi_TP3.Tests.Controllers
 {
@@ -13,13 +9,14 @@ namespace Archi_TP3.Tests.Controllers
     public class PatientsControllerTest
     {
         [TestMethod]
-        public void Index()
+        [DataRow("Albert", "Léna", "s@aze.com", "sk,k, azer, azer, azer", 102030405)]
+        public void Index(String LastName, String FirstName, String Email, String Address, int Telephone = 0)
         {
             // Arrange
             PatientsController controller = new PatientsController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.Index(LastName, FirstName, Email, Address, Telephone) as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
@@ -39,7 +36,7 @@ namespace Archi_TP3.Tests.Controllers
         }
 
         [TestMethod]
-        [DataRow(0)]
+        [DataRow(1)]
         public void Edit(int? id)
         {
             // Arrange
@@ -53,7 +50,7 @@ namespace Archi_TP3.Tests.Controllers
         }
 
         [TestMethod]
-        [DataRow(0)]
+        [DataRow(1)]
         public void Delete(int? id)
         {
             // Arrange

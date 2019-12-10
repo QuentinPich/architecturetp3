@@ -175,6 +175,22 @@
     <Compile Include="Migration\Clinic\201912051923395_InitialCreate1.designer.cs">
       <DependentUpon>201912051923395_InitialCreate1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migration\Clinic\201912101518203_UpdateCreate.cs" />
+    <Compile Include="Migration\Clinic\201912101518203_UpdateCreate.designer.cs">
+      <DependentUpon>201912101518203_UpdateCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migration\Clinic\201912101526385_UpdateCreate1.cs" />
+    <Compile Include="Migration\Clinic\201912101526385_UpdateCreate1.designer.cs">
+      <DependentUpon>201912101526385_UpdateCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migration\Clinic\201912101527525_UpdateRoom.cs" />
+    <Compile Include="Migration\Clinic\201912101527525_UpdateRoom.designer.cs">
+      <DependentUpon>201912101527525_UpdateRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migration\Clinic\201912101643210_UpdateRights.cs" />
+    <Compile Include="Migration\Clinic\201912101643210_UpdateRights.designer.cs">
+      <DependentUpon>201912101643210_UpdateRights.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migration\Clinic\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\DoctorType.cs" />
@@ -298,6 +314,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migration\Clinic\201912051923395_InitialCreate1.resx">
       <DependentUpon>201912051923395_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migration\Clinic\201912101518203_UpdateCreate.resx">
+      <DependentUpon>201912101518203_UpdateCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migration\Clinic\201912101526385_UpdateCreate1.resx">
+      <DependentUpon>201912101526385_UpdateCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migration\Clinic\201912101527525_UpdateRoom.resx">
+      <DependentUpon>201912101527525_UpdateRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migration\Clinic\201912101643210_UpdateRights.resx">
+      <DependentUpon>201912101643210_UpdateRights.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
